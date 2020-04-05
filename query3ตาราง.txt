@@ -1,0 +1,31 @@
+ 
+$query ="SELECT * FROM quota 
+  INNER JOIN user 
+  ON quota.quota_district = user.district_id 
+  WHERE   user.district_id = '".$_SESSION["district_id"]."' 
+AND user_id = '".$_SESSION["user_id"]."'";  //user.district_id= 8 , user_id = 14 
+
+//3 ?????
+$SQL="  SELECT *  FROM TABLE_USER AS d1
+             INNER JOIN TABLE_SALARY  AS d2
+             ON  (d1.id = d2.id)
+              INNER JOIN TABLE_STATUS  AS d3
+             ON  (d1.id = d3.id)
+            ";
+
+----------------------------------------------------------------------------
+//2?????
+$query ="SELECT *
+  FROM cfquota as c 
+  INNER JOIN quotadetail  as q ON c.cfquota_detail_id=q.quotadetail_id
+  ORDER BY c.cfquota_detail_id ASC";
+
+
+-----------------------------------------------------------------------------
+//3?????
+$query ="SELECT *
+  FROM cfquota as c 
+  INNER JOIN quotadetail  as q ON (c.cfquota_detail_id=q.quotadetail_id)
+  INNER JOIN user as u ON (u.user_id=c.cfquota_farm_id)
+  AND u.user_id = '".$_SESSION["user_id"]."'";
+  
